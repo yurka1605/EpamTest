@@ -14,9 +14,24 @@ window.onload = () => {
                 Users.renderData(sortArr);
             });
             usersList.addEventListener('click', (event) => {
-                console.log(event);
-                const fullName = event.target.children[1].innerHTML.split(' ');
-                Users.addInfoAboutUser( fullName[0],fullName[1], fullName[2]);
+                const nodeElemName = event.path[0].localName;
+                let fullName;
+                if (nodeElemName === 'li') {
+                    fullName = event.target.children[1].innerHTML;
+                } else if(nodeElemName === 'div') {
+                    fullName = event.target.innerHTML;
+                } else if(nodeElemName === 'img') {
+                    fullName = event.target.alt;
+                }
+                Users.addInfoAboutUser(fullName.replace(/\./, '').replace(/\s/g, ''));
+                popup.classList.add('open');
+                wrapper.classList.add('filter');
+                owerflow.style.display = 'block';
+            });
+            close.addEventListener('click', () => {
+                popup.classList.remove('open');
+                wrapper.classList.remove('filter');
+                owerflow.style.display = 'none';
             });
         }
 
@@ -49,10 +64,13 @@ window.onload = () => {
             this.renderData(sortArrUsers);
         }
 
-        static addInfoAboutUser(title, firstName, lastName) {
+        static addInfoAboutUser(fullName) {
             const sessionData = JSON.parse(sessionStorage.getItem('users')).results;
             sessionData.forEach(user => {
-               if(user.name.title === title && user.name.firstName === firstName && user.name.lastName === lastName) Users.renderInfoAboutUser(user);
+                let currentUserFullName = `${user.name.title}${user.name.first}${user.name.last}`;
+                if(fullName === currentUserFullName) {
+                    Users.renderInfoAboutUser(user);
+                }
             });
         }
 
@@ -64,16 +82,20 @@ window.onload = () => {
                 newUser.classList.add('user');
 
                 const imgUrl = user.picture.medium;
-                const titleUser = `${user.name.title}. `;
-                const fullName = user.name.fullName;
+                const fullName =`${user.name.title}. ${user.name.fullName}`;
 
-                newUser.innerHTML = `<img title="${fullName}" alt="${fullName}" src="${imgUrl}"><div>${titleUser}${fullName}</div>`;
+                newUser.innerHTML = `<img title="${fullName}" alt="${fullName}" src="${imgUrl}"><div class="userName">${fullName}</div>`;
                 usersList.appendChild(newUser);
             });
         }
 
         static renderInfoAboutUser(infoAboutUser) {
-            console.log(infoAboutUser);
+            myAvatar.src = infoAboutUser.picture.large;
+            myAvatar.alt = myAvatar.title = fullName.innerHTML = `${infoAboutUser.name.title}. ${infoAboutUser.name.first} ${infoAboutUser.name.last}`;
+            infoAddress.innerHTML = `${infoAboutUser.location.street}, ${infoAboutUser.location.city}, ${infoAboutUser.location.state}`;
+            emailInfo.innerHTML = infoAboutUser.email;
+            numberInfo.innerHTML = infoAboutUser.phone;
+            genderInfo.innerHTML = infoAboutUser.gender;
         }
     }
     new Users(URL).init();

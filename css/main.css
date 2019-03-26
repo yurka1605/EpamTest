@@ -7,6 +7,12 @@
     font-weight: normal;
     letter-spacing: normal;
 }
+h1{
+    font-size: 22px;
+}
+h2{
+    font-size: 18px;
+}
 li{
     list-style-type: none;
 }
@@ -14,7 +20,8 @@ body{
     background: #edeef0;
 }
 .wrapper{
-    width: 800px;
+    z-index: -1;
+    max-width: 800px;
     height: 500px;
     position: absolute;
     top: 50%;
@@ -81,7 +88,114 @@ select{
 .user:hover:before{
     width: 100%;
 }
-.user div{
+.userName{
     width: calc(100% - 200px);
     text-align: center;
+    font-size: 22px;
+}
+
+/* popup */
+
+.popupUserFullInfo{
+    z-index: 10110;
+    width: 500px;
+    height: 250px;
+    position: absolute;
+    background: #ffffff;
+    top: -50%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    display: flex;
+    justify-content: space-between;
+    transition: all linear 0.4s;
+}
+.open{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.close{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    right: 0;
+    margin-top: -10px;
+    margin-right: -10px;
+    border-radius: 50%;
+    background: #224b7a;
+    cursor: pointer;
+}
+.close:hover{
+    background: #386aa3;
+}
+.close:hover:after, .close:hover:before{
+    background: #edeef0;
+}
+.close::before, .close::after{
+    content: '';
+    height: 2px;
+    width: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    background: #ffffff;
+}
+.close::before{
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+#largeImage{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 150px;
+    height: 100%;
+    padding: 10px;
+    background: #4a76a8;
+}
+#fullName{
+    text-transform: capitalize;
+    padding: 20px 0;
+    color: #ffffff;
+    font-weight: bold;
+}
+#aboutMe{
+    width: calc(100% - 150px);
+    height: 100%;
+    background: #edeef0;
+    text-align: center;
+}
+#aboutMe h1{
+    padding: 5px 0;
+    font-weight: bold;
+}
+.address, .email, .number, .gender{
+    display: flex;
+    text-transform: capitalize;
+}
+#address, #email, #number, #gender{
+    padding: 10px 0;
+    width: 80px;
+}
+.infoAddress, .emailInfo, .numberInfo, .genderInfo{
+    padding: 12px 0;
+    font-size: 16px;
+    text-align: center;
+    width: calc(100% - 80px);
+}
+
+/* filter */
+.filter{
+    filter: blur(10px);
+}
+
+.owerflow{
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+    background: #000000;
+    opacity: 0.4;
+    display: none;
 }
