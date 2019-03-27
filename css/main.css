@@ -5,6 +5,7 @@
     font-size: 14px;
     font-family: 'Times New Roman', Times, serif;
     font-weight: normal;
+    color: #4a76a8;
     letter-spacing: normal;
 }
 h1{
@@ -21,17 +22,22 @@ body{
 }
 .wrapper{
     z-index: -1;
-    max-width: 800px;
-    height: 500px;
+    width: 70%;
+    height: 85vh;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 header{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     width: 100%;
-    height: 40px;
+    height: 60px;
     color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: #4a76a8;
     text-align: center;
     position: relative;
@@ -43,22 +49,34 @@ nav{
     transform: translate(-50%, -50%);
 }
 select{
+    appearance:none;
     padding: 5px;
+    height: 40px;
     margin-left: 10px;
     background: #224b7a;
+    color: #ffffff;
+    outline: none;
+    font-size: 20px;
+    border-radius: 5px;
+}
+option{
+    font-size: 20px;
+    color: #ffffff;
+}
+.sortBy{
+    font-size: 18px;
     color: #ffffff;
 }
 .mainUsersBlock{
     padding: 20px;
-    height: calc(100% - 40px);
+    height: calc(100% - 120px);
     background-color: #ffffff;
 }
 .listOfUsers{
     margin: 0 auto;
-    width: 600px;
+    width: 100%;
     height: 100%;
     overflow: auto;
-    /*border: 1px solid #4a76a8;*/
 }
 .user{
     padding: 10px;
@@ -94,6 +112,20 @@ select{
     font-size: 22px;
 }
 
+footer{
+    width: 100%;
+    height: 60px;
+    font-size: 22px;
+    text-transform: capitalize;
+    color: #ffffff;
+    background: #4a76a8;
+    text-align: center;
+    position: relative;
+    line-height: 60px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
 /* popup */
 
 .popupUserFullInfo{
@@ -108,6 +140,7 @@ select{
     display: flex;
     justify-content: space-between;
     transition: all linear 0.4s;
+    border-radius: 10px;
 }
 .open{
     top: 50%;
@@ -146,6 +179,8 @@ select{
     transform: translate(-50%, -50%) rotate(45deg);
 }
 #largeImage{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
     display: flex;
     text-align: center;
     flex-direction: column;
@@ -164,8 +199,11 @@ select{
 #aboutMe{
     width: calc(100% - 150px);
     height: 100%;
+    padding: 10px;
     background: #edeef0;
     text-align: center;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 #aboutMe h1{
     padding: 5px 0;
@@ -182,6 +220,7 @@ select{
 .infoAddress, .emailInfo, .numberInfo, .genderInfo{
     padding: 12px 0;
     font-size: 16px;
+    font-weight: bold;
     text-align: center;
     width: calc(100% - 80px);
 }
@@ -195,7 +234,56 @@ select{
     z-index: 1;
     width: 100%;
     height: 100vh;
-    background: #000000;
+    background: #4a76a8;
     opacity: 0.4;
     display: none;
+}
+
+/*scroll*/
+::-webkit-scrollbar { width: 10px; height: 3px;}
+::-webkit-scrollbar-track { background-color: #edeef0; border-radius: 10px;}
+::-webkit-scrollbar-thumb { height: 50px; background-color:  #4a76a8; border-radius: 10px;}
+
+/*media*/
+
+@media (max-width: 800px){
+    .wrapper{
+        width: 100%;
+        height: 100vh;
+        position: relative;
+        left: 0;
+        top: 0;
+        transform: translate(0, 0);
+    }
+    header, footer{
+        border-radius: 0;
+    }
+
+    /*popup*/
+    .popupUserFullInfo {
+        width: 400px;
+        height: 200px;
+    }
+    .open{
+        top: 30%;
+        left: 30%;
+        transform: translate(-30%, -30%);
+    }
+}
+@media (max-width: 400px){
+    header{
+        padding: 10px 0;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100px;
+    }
+    .mainUsersBlock{
+        height: calc(100% - 160px);
+        padding: 10px;
+    }
+    .popupUserFullInfo {
+        flex-direction: column;
+        width: 200px;
+        height: 100px;
+    }
 }

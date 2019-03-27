@@ -16,23 +16,13 @@ window.onload = () => {
             usersList.addEventListener('click', (event) => {
                 const nodeElemName = event.path[0].localName;
                 let fullName;
-                if (nodeElemName === 'li') {
-                    fullName = event.target.children[1].innerHTML;
-                } else if(nodeElemName === 'div') {
-                    fullName = event.target.innerHTML;
-                } else if(nodeElemName === 'img') {
-                    fullName = event.target.alt;
-                }
+                if (nodeElemName === 'li') fullName = event.target.children[1].innerHTML;
+                else if(nodeElemName === 'div') fullName = event.target.innerHTML;
+                else if(nodeElemName === 'img') fullName = event.target.alt;
                 Users.addInfoAboutUser(fullName.replace(/\./, '').replace(/\s/g, ''));
-                popup.classList.add('open');
-                wrapper.classList.add('filter');
-                owerflow.style.display = 'block';
             });
-            close.addEventListener('click', () => {
-                popup.classList.remove('open');
-                wrapper.classList.remove('filter');
-                owerflow.style.display = 'none';
-            });
+            owerflow.addEventListener('click', closePopup);
+            close.addEventListener('click', closePopup);
         }
 
         getUsersJson() {
@@ -57,7 +47,7 @@ window.onload = () => {
                 });
         }
 
-        //Обрабатываем данные полученные с сервера
+        //Обработка данных
         static parseJson(data) {
             sessionStorage.setItem('users', JSON.stringify(data));
             const sortArrUsers = sortFullName(data);
@@ -74,7 +64,7 @@ window.onload = () => {
             });
         }
 
-        // Рендерим в html
+        // Рендер в html
         static renderData(users) {
             usersList.innerHTML = '';
             users.forEach((user) => {
@@ -87,6 +77,7 @@ window.onload = () => {
                 newUser.innerHTML = `<img title="${fullName}" alt="${fullName}" src="${imgUrl}"><div class="userName">${fullName}</div>`;
                 usersList.appendChild(newUser);
             });
+            footer.innerHTML = `${new Date().toLocaleDateString().split('\.')[2]} &copy Copyright`;
         }
 
         static renderInfoAboutUser(infoAboutUser) {
@@ -96,6 +87,9 @@ window.onload = () => {
             emailInfo.innerHTML = infoAboutUser.email;
             numberInfo.innerHTML = infoAboutUser.phone;
             genderInfo.innerHTML = infoAboutUser.gender;
+            popup.classList.add('open');
+            wrapper.classList.add('filter');
+            owerflow.style.display = 'block';
         }
     }
     new Users(URL).init();

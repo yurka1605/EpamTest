@@ -19,3 +19,8 @@ const sortFullName = (data, sortingMethod = '') => {
     });
     return sortArrUsers;
 };
+const closePopup = () => {
+    popup.classList.remove('open');
+    wrapper.classList.remove('filter');
+    owerflow.style.display = 'none';
+};
