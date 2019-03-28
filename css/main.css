@@ -123,7 +123,7 @@ footer{
 /*overlay*/
 
 .spinner{
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -313,6 +313,21 @@ footer{
     .popupUserFullInfo {
         width: 350px;
     }
+    .info{
+        padding: 5px 0;
+        font-weight: normal;
+    }
+    #address, #email, #number, #gender {
+        padding:0;
+    }
+    #aboutMe h1{
+        font-size: 20px;
+    }
+    .userName{
+        width: 180px;
+        font-size: 18px;
+        justify-content: space-between;
+    }
 }
 @media (max-width: 400px){
     header{
@@ -331,6 +346,9 @@ footer{
     }
     #fullName{
         padding: 0;
+        padding-top: 5px;
+        font-size: 18px;
+        font-weight: normal;
     }
     #abouteMe{
         padding: 0 10px;
