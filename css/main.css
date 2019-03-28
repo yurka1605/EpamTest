@@ -127,6 +127,7 @@ footer{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    transform-origin: center;
     width: 70px;
     height: 70px;
     border-radius: 50%;
@@ -137,8 +138,8 @@ footer{
     animation: spinner 1.5s linear infinite;
 }
 @keyframes spinner {
-    from {transform: rotate(0deg)}
-    to {transform: rotate(360deg)}
+    from {transform: translate(-50%, -50%) rotate(0deg);}
+    to {transform: translate(-50%, -50%) rotate(360deg);}
 }
 
 /* popup */
@@ -147,7 +148,7 @@ footer{
     z-index: 10110;
     width: 500px;
     height: 250px;
-    position: absolute;
+    position: fixed;
     background: #ffffff;
     top: -100%;
     left: 50%;
@@ -162,12 +163,12 @@ footer{
 }
 .close{
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
     top: 0;
     right: 0;
-    margin-top: -10px;
-    margin-right: -10px;
+    margin-top: -15px;
+    margin-right: -15px;
     border-radius: 50%;
     background: #224b7a;
     cursor: pointer;
@@ -181,7 +182,7 @@ footer{
 .close::before, .close::after{
     content: '';
     height: 2px;
-    width: 10px;
+    width: 20px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -253,6 +254,8 @@ footer{
     background: #000000;
     opacity: 0.7;
     position: absolute;
+    top: 0;
+    left: 0;
     display: none;
 }
 
@@ -325,6 +328,15 @@ footer{
     }
     .popupUserFullInfo {
         width: 270px;
+    }
+    #fullName{
+        padding: 0;
+    }
+    #abouteMe{
+        padding: 0 10px;
+    }
+    #aboutMe h1 {
+        padding: 0;
     }
     .info { font-size: 14px;}
 }
