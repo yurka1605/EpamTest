@@ -42,12 +42,6 @@ header{
     text-align: center;
     position: relative;
 }
-nav{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
 select{
     appearance:none;
     padding: 5px;
@@ -210,9 +204,11 @@ footer{
 .address, .email, .number, .gender{
     display: flex;
     text-transform: capitalize;
+    text-align: left;
 }
 #address, #email, #number, #gender{
     padding: 10px 0;
+    text-align: left;
     width: 80px;
 }
 .infoAddress, .emailInfo, .numberInfo, .genderInfo{
@@ -244,44 +240,31 @@ footer{
 
 /*media*/
 
-/*@media (max-width: 800px){*/
-    /*.wrapper{*/
-        /*width: 100%;*/
-        /*height: 100vh;*/
-        /*position: relative;*/
-        /*left: 0;*/
-        /*top: 0;*/
-        /*transform: translate(0, 0);*/
-    /*}*/
-    /*header, footer{*/
-        /*border-radius: 0;*/
-    /*}*/
+@media (max-width: 800px){
+    .wrapper{
+        width: 100%;
+        height: 100vh;
+        left: 0;
+        top: 0;
+        transform: translate(0, 0);
+    }
+    header, footer{
+        border-radius: 0;
+    }
 
-    /*!*popup*!*/
-    /*.popupUserFullInfo {*/
-        /*width: 400px;*/
-        /*height: 200px;*/
-    /*}*/
-    /*.open{*/
-        /*top: 30%;*/
-        /*left: 30%;*/
-        /*transform: translate(-30%, -30%);*/
-    /*}*/
-/*}*/
-@media (max-width: 400px){
-    header{
-        padding: 10px 0;
-        flex-direction: column;
-        justify-content: space-around;
-        height: 100px;
-    }
-    .mainUsersBlock{
-        height: calc(100% - 160px);
-        padding: 10px;
-    }
     .popupUserFullInfo {
-        flex-direction: column;
-        width: 300px;
+        width: 70%;
+        height: 50vh;
+    }
+    .open{
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+@media (max-width: 670px) {
+    .popupUserFullInfo {
+        width: 400px;
         height: auto;
     }
     #largeImage{
@@ -299,4 +282,26 @@ footer{
         height: auto;
         border-bottom-left-radius: 5px;
     }
+}
+@media (max-width: 450px) {
+    .popupUserFullInfo {
+        width: 350px;
+    }
+}
+@media (max-width: 400px){
+    header{
+        padding: 10px 0;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100px;
+    }
+    .mainUsersBlock{
+        height: calc(100% - 160px);
+        padding: 10px;
+        width: 100%;
+    }
+    .popupUserFullInfo {
+        width: 290px;
+    }
+    .infoAddress, .emailInfo, .numberInfo, .genderInfo { font-size: 14px;}
 }
