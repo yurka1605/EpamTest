@@ -14,5 +14,6 @@ var fullName = document.getElementById('fullName');
 
 var popup = document.getElementsByClassName('popupUserFullInfo')[0];
 var wrapper = document.getElementsByClassName('wrapper')[0];
-var owerflow = document.getElementsByClassName('owerflow')[0];
+var overlay = document.getElementsByClassName('overlay')[0];
 var close = document.getElementsByClassName('close')[0];
+var spinner = document.getElementsByClassName('spinner')[0];

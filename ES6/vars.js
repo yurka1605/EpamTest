@@ -13,5 +13,6 @@ const fullName = document.getElementById('fullName');
 
 const popup = document.getElementsByClassName('popupUserFullInfo')[0];
 const wrapper = document.getElementsByClassName('wrapper')[0];
-const owerflow = document.getElementsByClassName('owerflow')[0];
+const overlay = document.getElementsByClassName('overlay')[0];
 const close = document.getElementsByClassName('close')[0];
+const spinner = document.getElementsByClassName('spinner')[0];

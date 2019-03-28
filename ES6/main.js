@@ -6,6 +6,10 @@ window.onload = () => {
         }
         init() {
             this.getUsersJson();
+
+            wrapper.classList.add('filter');
+            overlay.style.display = spinner.style.display = 'block';
+
             selectSort.addEventListener('change', (event) => {
                 let sortArr;
                 const sessionData = JSON.parse(sessionStorage.getItem('users'));
@@ -21,14 +25,13 @@ window.onload = () => {
                 else if(nodeElemName === 'img') fullName = event.target.alt;
                 Users.addInfoAboutUser(fullName.replace(/[\s .]/g, ''));
             });
-            owerflow.addEventListener('click', closePopup);
             close.addEventListener('click', closePopup);
         }
 
         getUsersJson() {
-            const myHeaders = new Headers();
+            // const myHeaders = new Headers();
             const myInit = { method: 'GET',
-                headers: myHeaders,
+                // headers: myHeaders,
                 mode: 'cors',
                 cache: 'default'
             };
@@ -41,6 +44,7 @@ window.onload = () => {
                 })
                 .then( success => {
                     Users.parseJson(success);
+                    setTimeout(closePopup,200);
                 })
                 .catch( error => {
                     console.log('Problem with request: ' + error.message);
@@ -89,7 +93,7 @@ window.onload = () => {
             genderInfo.innerHTML = infoAboutUser.gender;
             popup.classList.add('open');
             wrapper.classList.add('filter');
-            owerflow.style.display = 'block';
+            overlay.style.display = 'block';
         }
     }
     new Users(URL).init();

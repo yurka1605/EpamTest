@@ -16,6 +16,10 @@ window.onload = function () {
             key: 'init',
             value: function init() {
                 this.getUsersJson();
+
+                wrapper.classList.add('filter');
+                overlay.style.display = spinner.style.display = 'block';
+
                 selectSort.addEventListener('change', function (event) {
                     var sortArr = void 0;
                     var sessionData = JSON.parse(sessionStorage.getItem('users'));
@@ -28,15 +32,14 @@ window.onload = function () {
                     if (nodeElemName === 'li') fullName = event.target.children[1].innerHTML;else if (nodeElemName === 'div') fullName = event.target.innerHTML;else if (nodeElemName === 'img') fullName = event.target.alt;
                     Users.addInfoAboutUser(fullName.replace(/[\s .]/g, ''));
                 });
-                owerflow.addEventListener('click', closePopup);
                 close.addEventListener('click', closePopup);
             }
         }, {
             key: 'getUsersJson',
             value: function getUsersJson() {
-                var myHeaders = new Headers();
+                // const myHeaders = new Headers();
                 var myInit = { method: 'GET',
-                    headers: myHeaders,
+                    // headers: myHeaders,
                     mode: 'cors',
                     cache: 'default'
                 };
@@ -46,6 +49,7 @@ window.onload = function () {
                     if (response.status === 200) return response.json();else throw new Error('Response status not 200.');
                 }).then(function (success) {
                     Users.parseJson(success);
+                    setTimeout(closePopup, 200);
                 }).catch(function (error) {
                     console.log('Problem with request: ' + error.message);
                 });
@@ -101,7 +105,7 @@ window.onload = function () {
                 genderInfo.innerHTML = infoAboutUser.gender;
                 popup.classList.add('open');
                 wrapper.classList.add('filter');
-                owerflow.style.display = 'block';
+                overlay.style.display = 'block';
             }
         }]);
 

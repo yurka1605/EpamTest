@@ -48,5 +48,6 @@ var sortFullName = function sortFullName(data) {
 var closePopup = function closePopup() {
     popup.classList.remove('open');
     wrapper.classList.remove('filter');
-    owerflow.style.display = 'none';
+    overlay.style.display = 'none';
+    spinner.style.display === 'block' ? spinner.style.display = 'none' : false;
 };

@@ -22,5 +22,6 @@ const sortFullName = (data, sortingMethod = '') => {
 const closePopup = () => {
     popup.classList.remove('open');
     wrapper.classList.remove('filter');
-    owerflow.style.display = 'none';
+    overlay.style.display = 'none';
+    spinner.style.display === 'block' ? spinner.style.display = 'none': false;
 };
