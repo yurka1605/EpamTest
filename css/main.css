@@ -211,14 +211,16 @@ footer{
     text-align: left;
     width: 80px;
 }
-.infoAddress, .emailInfo, .numberInfo, .genderInfo{
+.info{
     padding: 12px 0;
     font-size: 16px;
     font-weight: bold;
     text-align: center;
     width: calc(100% - 80px);
 }
-
+.emailInfo{
+    word-wrap: break-word;
+}
 /* filter */
 .filter{
     filter: blur(10px);
@@ -254,7 +256,6 @@ footer{
 
     .popupUserFullInfo {
         width: 70%;
-        height: 50vh;
     }
     .open{
         top: 50%;
@@ -264,6 +265,7 @@ footer{
 }
 @media (max-width: 670px) {
     .popupUserFullInfo {
+        flex-direction: column;
         width: 400px;
         height: auto;
     }
@@ -278,7 +280,7 @@ footer{
         width: 128px;
     }
     #aboutMe{
-        width: 100%;
+        width: auto;
         height: auto;
         border-bottom-left-radius: 5px;
     }
@@ -302,6 +304,7 @@ footer{
     }
     .popupUserFullInfo {
         width: 290px;
+        max-height: 460px;
     }
-    .infoAddress, .emailInfo, .numberInfo, .genderInfo { font-size: 14px;}
+    .info { font-size: 14px;}
 }
