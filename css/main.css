@@ -172,6 +172,7 @@ footer{
     border-radius: 50%;
     background: #224b7a;
     cursor: pointer;
+    border: 1px solid #ffffff;
 }
 .close:hover{
     background: #386aa3;
