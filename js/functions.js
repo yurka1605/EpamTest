@@ -15,10 +15,11 @@ var sortFullName = function sortFullName(data) {
 
             user.name = {
                 title: user.name.title,
-                fullName: user.name.first + ' ' + user.name.last
+                fullName: user.name.first + ' ' + user.name.last,
+                fullSortName: user.name.last + ' ' + user.name.first
             };
             usersList.push(user);
-            userListName.push(user.name.fullName);
+            userListName.push(user.name.fullSortName);
         }
     } catch (err) {
         _didIteratorError = true;
@@ -35,12 +36,13 @@ var sortFullName = function sortFullName(data) {
         }
     }
 
+    console.log(userListName);
     sortingMethod === '' ? userListName = userListName.sort() : userListName = userListName.sort().reverse();
-
+    console.log(userListName);
     var sortArrUsers = [];
     userListName.forEach(function (fullName) {
         usersList.forEach(function (user) {
-            if (fullName === user.name.fullName) sortArrUsers.push(user);
+            if (fullName === user.name.fullSortName) sortArrUsers.push(user);
         });
     });
     return sortArrUsers;

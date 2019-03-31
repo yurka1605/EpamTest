@@ -5,16 +5,18 @@ const sortFullName = (data, sortingMethod = '') => {
         user.name = {
             title: user.name.title,
             fullName: `${user.name.first} ${user.name.last}`,
+            fullSortName: `${user.name.last} ${user.name.first}`,
         };
         usersList.push(user);
-        userListName.push(user.name.fullName);
+        userListName.push(user.name.fullSortName);
     }
+    console.log(userListName);
     sortingMethod === '' ? userListName = userListName.sort() : userListName = userListName.sort().reverse();
-
+    console.log(userListName);
     let sortArrUsers = [];
     userListName.forEach((fullName) => {
         usersList.forEach((user) => {
-            if(fullName === user.name.fullName) sortArrUsers.push(user);
+            if(fullName === user.name.fullSortName) sortArrUsers.push(user);
         });
     });
     return sortArrUsers;
