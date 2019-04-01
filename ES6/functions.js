@@ -10,9 +10,7 @@ const sortFullName = (data, sortingMethod = '') => {
         usersList.push(user);
         userListName.push(user.name.fullSortName);
     }
-    console.log(userListName);
     sortingMethod === '' ? userListName = userListName.sort() : userListName = userListName.sort().reverse();
-    console.log(userListName);
     let sortArrUsers = [];
     userListName.forEach((fullName) => {
         usersList.forEach((user) => {

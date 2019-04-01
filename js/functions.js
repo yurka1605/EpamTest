@@ -36,9 +36,7 @@ var sortFullName = function sortFullName(data) {
         }
     }
 
-    console.log(userListName);
     sortingMethod === '' ? userListName = userListName.sort() : userListName = userListName.sort().reverse();
-    console.log(userListName);
     var sortArrUsers = [];
     userListName.forEach(function (fullName) {
         usersList.forEach(function (user) {
